@@ -56,9 +56,8 @@ while play
   store.each_pair {|key, value| puts "#{key} - #{value}" }# for onscreen confirmation
   # end of add title
 
-    def check_answer(user_selection)
+    def check_answer(user_selection, store)
       item_keys = store.keys
-      user_selection = gets.chomp
 
       until item_keys.include?(user_selection) do
         puts "please enter a valid item"
@@ -69,6 +68,8 @@ while play
   # # edit a title
   puts "Let's change a name of a game title eh? Which game gets the change?\n"
   old_name = gets.chomp.downcase
+  check_answer(old_name, store)
+
   puts "What should its new name be?\n"
   new_name = gets.chomp.downcase
   store[new_name] = store.delete(old_name)
